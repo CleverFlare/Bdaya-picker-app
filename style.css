@@ -1,7 +1,16 @@
+@font-face {
+    font-family: Ramadan;
+    src: url('./ramadan\ font/RamadhanMubarokRegular-jEJal.otf');
+}
+
 * {
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    pointer-events: none;
 }
 
 body {
@@ -9,9 +18,10 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     height: 100vh;
-    background-color: white;
+    background-image: url('https://img.freepik.com/free-vector/star-sky-space-stars-background-glitter-particles_160081-289.jpg');
+    background-color: #000;
 }
 
 svg {
@@ -59,11 +69,12 @@ svg {
     cursor: pointer;
     border: none;
     padding: 5px;
+    color: #fff;
     background-color: transparent;
 }
 
 .dashboardExit:hover {
-    color: #0005;
+    color: #fff9;
 }
 
 .dashboard.show {
@@ -80,15 +91,16 @@ svg {
     left: -100vw;
     width: 100vw;
     height: 100vh;
-    background-color: #fff;
-    gap: 10px;
+    background-color: #000;
+    gap: 30px;
     transition: .5s;
+    z-index: 10000;
 }
 
 .dashboard .membersTable {
     border-spacing: 0;
-    width: 90%;
-    border: #5c5c5c solid 1px;
+    width: 500px;
+    box-shadow: 0 0 20px 5px #fff9;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -102,49 +114,61 @@ svg {
     background-color: #e7e9eb;
 }
 
+.dashboard .membersTable tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
 .dashboard .membersTable th, td {
     padding: 10px;
     text-align: left;
 }
 
-.draftWindow {
+.pickWindow {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 300px;
-    height: 250px;
-    border-radius: 10px;
-    background-color: #cdcdcd;
-    border: #a7a7a7 solid 2px;
-    box-shadow: 0px 10px 10px -5px #0005;
+    min-width: 50px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 30px 10px #fff6;
     gap: 10px;
     transition: .2s;
+    position: relative;
 }
 
-.draftWindow h1 {
-    font-size: larger;
-    color: #5c5c5c;
+.pickWindow .pickInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pickWindow h1 {
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
     transition: .5s;
 }
 
-.draftWindow p {
-    font-size: large;
+.pickWindow p {
+    font-family: Ramadan;
+    font-size: 2rem;
     color: #7c7c7c;
     transition: .1s;
 }
 
-.draftWindow.start {
+.pickWindow.start {
     transform: scale(1.05);
-    box-shadow: 0px 20px 20px -5px #0005;
 }
 
-.draftWindow.start h1 {
-    transform: scale(1.2);
-}
-
-.draftWindow.start p {
-    transform: scale(1.2);
+.pickWindow.start .pickInfo {
+    transform: translateX(-50%) scale(1.2);
 }
 
 .bdayaButton {
@@ -165,4 +189,10 @@ svg {
 
 .bdayaButton:active {
     filter: brightness(0.9);
+}
+
+@media screen and (max-width: 794px) {
+    .pickWindow {
+        width: 90%;
+    }
 }

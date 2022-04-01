@@ -2,9 +2,8 @@ const config = document.querySelector('.config');
 const configExist = document.querySelector('.dashboardExit');
 const dashboard = document.querySelector('.dashboard');
 const startButton = document.querySelector('#startButton');
-const draftWindow = document.querySelector('.draftWindow');
-const memberName = document.querySelector('.draftWindow .memberName');
-const memberCode = document.querySelector('.draftWindow .memberCode');
+const pickWindow = document.querySelector('.pickWindow');
+const memberName = document.querySelector('.pickWindow .memberName');
 const membersTable = document.querySelector('.membersTable tbody');
 
 let trackMembers;
@@ -22,51 +21,57 @@ function hideMembersTable(event) {
 }
 
 function startPicking() {
-    draftWindow.classList.add('start');
+    pickWindow.classList.add('start');
 }
 
 config.addEventListener('click', showMembersTable)
 configExist.addEventListener('click', hideMembersTable)
 
 async function getMembers() {
+
     await fetch('./members.json').then(res => {
         res.json().then(members => {
-            trackMembers = members;
-            console.log(trackMembers.randomize());
-            members.forEach(member => {
+            if(members.length === 0) {
+                memberName.textContent = 'No member has been provided';
                 const memberItem = document.createElement('tr');
 
                 const memberItemName = document.createElement('td');
-                memberItemName.textContent = member.name;
+                memberItemName.textContent = 'empty';
                 memberItem.appendChild(memberItemName);
 
-                const memberItemCode = document.createElement('td');
-                memberItemCode.textContent = member.code;
-                memberItem.appendChild(memberItemCode);
-
                 membersTable.appendChild(memberItem);
-            })
+            } else {
+                trackMembers = members;
+                for(let member of members) {
+                    const memberItem = document.createElement('tr');
 
-            memberName.textContent = trackMembers[members.randomize()].name;
-            memberCode.textContent = trackMembers[members.randomize()].code;
+                    const memberItemName = document.createElement('td');
+                    memberItemName.textContent = member;
+                    memberItem.appendChild(memberItemName);
 
-            startButton.addEventListener('click', e => {
-                startPicking();
+                    membersTable.appendChild(memberItem);
+                }
 
-                let pick = setInterval(e => {
-                    memberName.textContent = trackMembers[members.randomize()].name;
-                    memberCode.textContent = trackMembers[members.randomize()].code;
-                }, 30);
+                memberName.textContent = trackMembers[members.randomize()];
 
-                setTimeout(e => {
-                    clearInterval(pick);
-                    draftWindow.classList.remove('start');
-                    confetti.start();
+                startButton.addEventListener('click', e => {
+                    if(pickWindow.classList.contains('start')) return;
+                    startPicking();
+
+                    let pick = setInterval(e => {
+                        memberName.textContent = trackMembers[members.randomize()];
+                    }, 30);
+
                     setTimeout(e => {
-                        confetti.stop();
-                    }, 2000)
-                }, 2000);
-            })
+                        clearInterval(pick);
+                        pickWindow.classList.remove('start');
+                        confetti.start();
+                        setTimeout(e => {
+                            confetti.stop();
+                        }, 2000)
+                    }, 2000);
+                })
+            }
         })
     });
 }
