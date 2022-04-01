@@ -49,6 +49,7 @@ svg {
     padding: 5px;
     border-radius: 5px;
     background-color: #cdcdcd;
+    z-index: 2;
 }
 
 .config:hover {
@@ -192,6 +193,12 @@ svg {
 }
 
 @media screen and (max-width: 794px) {
+    h1 {
+        font-size: 7vw !important;
+    }
+    p {
+        font-size: 5vw !important;
+    }
     .pickWindow {
         width: 90%;
     }
