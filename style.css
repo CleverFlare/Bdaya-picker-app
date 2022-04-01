@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    background-color: white;
+}
+
+svg {
+    pointer-events: none;
+}
+
+.logo {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 150px;
+    opacity: .3;
+    pointer-events: none;
+}
+
+.config {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #cdcdcd;
+}
+
+.config:hover {
+    filter: brightness(0.9);
+}
+
+.config:active {
+    filter: brightness(0.8);
+}
+
+.dashboardExit {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    background-color: transparent;
+}
+
+.dashboardExit:hover {
+    color: #0005;
+}
+
+.dashboard.show {
+    left: 0;
+}
+
+.dashboard {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    left: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    gap: 10px;
+    transition: .5s;
+}
+
+.dashboard .membersTable {
+    border-spacing: 0;
+    width: 90%;
+    border: #5c5c5c solid 1px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.dashboard .membersTable thead {
+    background-color: #000;
+    color: #fff;
+}
+
+.dashboard .membersTable tbody tr:nth-child(odd) {
+    background-color: #e7e9eb;
+}
+
+.dashboard .membersTable th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.draftWindow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 250px;
+    border-radius: 10px;
+    background-color: #cdcdcd;
+    border: #a7a7a7 solid 2px;
+    box-shadow: 0px 10px 10px -5px #0005;
+    gap: 10px;
+    transition: .2s;
+}
+
+.draftWindow h1 {
+    font-size: larger;
+    color: #5c5c5c;
+    transition: .5s;
+}
+
+.draftWindow p {
+    font-size: large;
+    color: #7c7c7c;
+    transition: .1s;
+}
+
+.draftWindow.start {
+    transform: scale(1.05);
+    box-shadow: 0px 20px 20px -5px #0005;
+}
+
+.draftWindow.start h1 {
+    transform: scale(1.2);
+}
+
+.draftWindow.start p {
+    transform: scale(1.2);
+}
+
+.bdayaButton {
+    width: 100px;
+    height: 40px;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: large;
+    box-shadow: 0px 10px 10px -5px #0005;
+}
+
+.bdayaButton:hover {
+    filter: brightness(1.2);
+}
+
+.bdayaButton:active {
+    filter: brightness(0.9);
+}
