@@ -195,4 +195,7 @@ svg {
     .pickWindow {
         width: 90%;
     }
+    .dashboard .membersTable {
+        width: 90%;
+    }
 }
