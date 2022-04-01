@@ -193,12 +193,6 @@ svg {
 }
 
 @media screen and (max-width: 794px) {
-    h1 {
-        font-size: 7vw !important;
-    }
-    p {
-        font-size: 5vw !important;
-    }
     .pickWindow {
         width: 90%;
     }
