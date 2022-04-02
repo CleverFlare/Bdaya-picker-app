@@ -157,6 +157,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     height: 200px;
+    width: 90%;
 }
 
 .pickWindow h1 {
@@ -202,6 +203,10 @@ body {
 }
 
 @media screen and (max-width: 794px) {
+    h1 {
+        font-size: 8vw !important;
+        width: 50%;
+    }
     .pickWindow {
         width: 90%;
     }
