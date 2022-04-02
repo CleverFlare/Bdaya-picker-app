@@ -1,6 +1,6 @@
 # Bdaya-picker-app
 
-[![build status][build-badge]][build]
+[![build status][build-badge]][unBuild]
 [![code coverage][coverage-badge]][coverage]
 [![npm version][version-badge]][package]
 [![bundle size][minzip-badge]][bundlephobia]
