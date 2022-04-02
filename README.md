@@ -1,5 +1,5 @@
 # Bdaya-picker-app
-[![build status][build-badge]][build]
+[!build status][build-badge]][build]
 
 [build-badge]: https://img.shields.io/github/workflow/status/paypal/paypal-js/validate?logo=github&style=flat-square
 
