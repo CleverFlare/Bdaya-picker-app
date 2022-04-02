@@ -24,19 +24,6 @@ body {
     background-color: #000;
 }
 
-svg {
-    pointer-events: none;
-}
-
-.logo {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    width: 150px;
-    opacity: .3;
-    pointer-events: none;
-}
-
 .config {
     display: flex;
     justify-content: center;
@@ -70,16 +57,13 @@ svg {
     cursor: pointer;
     border: none;
     padding: 5px;
-    color: #fff;
-    background-color: transparent;
+    color: #000;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .dashboardExit:hover {
-    color: #fff9;
-}
-
-.dashboard.show {
-    left: 0;
+    color: #0009;
 }
 
 .dashboard {
@@ -89,21 +73,38 @@ svg {
     align-items: center;
     flex-direction: column;
     position: fixed;
-    left: -100vw;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #000;
+    visibility: hidden;
+    opacity: 0;
+    background-color: #fff2;
+    backdrop-filter: blur(5px);;
     gap: 30px;
     transition: .5s;
     z-index: 10000;
 }
 
+.dashboard.show {
+    visibility: visible;
+    opacity: 1;
+}
+
 .dashboard .membersTable {
+    position: absolute;
+    left: -150%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     border-spacing: 0;
     width: 500px;
     box-shadow: 0 0 20px 5px #fff9;
     border-radius: 10px;
     overflow: hidden;
+    transition: .5s;
+}
+
+.dashboard.show .membersTable {
+    left: 50%;
 }
 
 .dashboard .membersTable thead {
@@ -140,14 +141,14 @@ svg {
 
 .pickWindow .pickInfo {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
     position: absolute;
     top: 200px;
     left: 50%;
     transform: translateX(-50%);
+    height: 200px;
 }
 
 .pickWindow h1 {
